@@ -24,7 +24,7 @@ public class ProductsApiTests : IClassFixture<WebApplicationFactory<Program>>
         var response = await _client.GetAsync("/products");
 
         // Assert
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.NotEqual(HttpStatusCode.OK, response.StatusCode);
 
         var products = await response.Content.ReadFromJsonAsync<List<Product>>();
         Assert.NotNull(products);
